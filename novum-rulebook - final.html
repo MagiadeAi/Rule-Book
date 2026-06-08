@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVUM — Operating Manual v2.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-red: #E63946;
+    --soft-coral: #FF6B6B;
+    --pure-white: #F8F8F8;
+    --jet-black: #0D0D0D;
+    --light-gray: #E8E8E8;
+    --dark-gray: #2B2B2B;
+    --soft-pink: #FFD6D6;
+    --bg: #F7F7F9;
+    --gradient-primary: linear-gradient(135deg, #E63946, #FF6B6B);
+    --gradient-dark: linear-gradient(135deg, #0A0A0A, #181818);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.08);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--jet-black);
+    line-height: 1.7;
+    overflow-x: hidden;
+    letter-spacing: -0.1px;
+  }
+
+  /* ── SIDEBAR NAV ── */
+  .sidebar {
+    position: fixed;
+    left: 0; top: 0;
+    width: 260px;
+    height: 100vh;
+    background: var(--jet-black);
+    padding: 32px 0 24px;
+    overflow-y: auto;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 32px rgba(0,0,0,0.15);
+    border-right: 1px solid rgba(255, 255, 255, 0.03);
+  }
+
+  .sidebar-logo {
+    padding: 0 24px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    margin-bottom: 20px;
+  }
+
+  .sidebar-logo img {
+    width: 125px;
+    display: block;
+  }
+
+  .sidebar-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    padding: 0 24px;
+    margin-bottom: 10px;
+    margin-top: 4px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 24px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: all 0.25s ease;
+    border-left: 3px solid transparent;
+    letter-spacing: 0.3px;
+  }
+
+  .nav-item:hover, .nav-item.active {
+    color: #fff;
+    background: rgba(230,57,70,0.08);
+    border-left-color: var(--brand-red);
+    padding-left: 28px;
+  }
+
+  .nav-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--brand-red);
+    min-width: 18px;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 24px 24px 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .sidebar-footer p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+  }
+
+  .version-badge {
+    display: inline-block;
+    background: var(--gradient-primary);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    margin-left: 260px;
+    min-height: 100vh;
+  }
+
+  /* ── HERO HEADER ── */
+  .hero {
+    background-color: #070708;
+    background-image: 
+      radial-gradient(circle at 80% 20%, rgba(230, 57, 70, 0.12) 0%, transparent 45%), 
+      radial-gradient(circle at 15% 85%, rgba(230, 57, 70, 0.06) 0%, transparent 55%), 
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+    padding: 80px 64px 72px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  }
+
+  .hero-confidential {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--soft-coral);
+    margin-bottom: 24px;
+    opacity: 0.95;
+  }
+
+  .hero-logo-wrap {
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-logo-wrap img {
+    height: 54px;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 0 20px rgba(230, 57, 70, 0.15));
+  }
+
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+    line-height: 0.95;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-title .word-operating {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 600;
+    color: var(--soft-coral);
+    letter-spacing: -0.5px;
+    line-height: 1.0;
+  }
+
+  .hero-title .word-manual {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 60px;
+    font-weight: 900;
+    color: var(--pure-white);
+    letter-spacing: -2px;
+    line-height: 1.0;
+    margin-top: 4px;
+  }
+
+  .hero-subtitle {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 400;
+    margin-bottom: 36px;
+    letter-spacing: 0.3px;
+    max-width: 520px;
+    line-height: 1.65;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .meta-chip {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.6);
+    font-family: 'Outfit', sans-serif;
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+  }
+
+  .meta-chip:hover {
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+  }
+
+  .meta-chip.red {
+    background: rgba(230,57,70,0.15);
+    border-color: rgba(230,57,70,0.25);
+    color: #FF8E96;
+  }
+
+  /* ── CONTEXT NOTE ── */
+  .context-note {
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 24px 64px;
+  }
+
+  .context-note p {
+    font-size: 14px;
+    color: #555;
+    max-width: 720px;
+    line-height: 1.8;
+  }
+
+  /* ── CONTENT WRAPPER ── */
+  .content {
+    padding: 64px;
+    max-width: 960px;
+  }
+
+  /* ── SECTION CARDS ── */
+  .section {
+    margin-bottom: 56px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .section-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--brand-red);
+    text-transform: uppercase;
+    display: inline-block;
+  }
+
+  .section-num::after {
+    content: ' —';
+  }
+
+  .section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    font-weight: 750;
+    color: var(--jet-black);
+    letter-spacing: -0.4px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 32px 36px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    margin-bottom: 20px;
+  }
+
+  .card p {
+    font-size: 14.5px;
+    color: var(--dark-gray);
+    margin-bottom: 14px;
+    line-height: 1.75;
+  }
+
+  .card p:last-child { margin-bottom: 0; }
+
+  /* ── PRINCIPLE LIST ── */
+  .principle-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .principle-list li {
+    font-size: 14.5px;
+    color: var(--dark-gray);
+    background: #fff;
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-sm);
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .principle-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand-red);
+    flex-shrink: 0;
+  }
+
+  /* ── DISTRIBUTION TABLE ── */
+  .dist-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.06);
+    margin: 20px 0;
+    font-size: 14px;
+  }
+
+  .dist-table thead tr {
+    background: var(--gradient-dark);
+  }
+
+  .dist-table thead th {
+    padding: 16px 24px;
+    text-align: left;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: none;
+  }
+
+  .dist-table tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: background 0.15s;
+  }
+
+  .dist-table tbody tr:last-child { border-bottom: none; }
+  .dist-table tbody tr:hover { background: #fafafa; }
+
+  .dist-table tbody td {
+    padding: 16px 24px;
+    color: var(--dark-gray);
+    line-height: 1.5;
+  }
+
+  .dist-table tbody td:nth-child(2) {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--brand-red);
+  }
+
+  /* ── STEP FLOW ── */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  .step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 0 0 20px;
+  }
+
+  .step:last-child { padding-bottom: 0; }
+
+  .step-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid var(--brand-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--brand-red);
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .step-body {
+    background: #fff;
+    border-radius: var(--radius-sm);
+    padding: 18px 22px;
+    flex: 1;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-sm);
+    margin-top: 0;
+  }
+
+  .step-body strong {
+    display: block;
+    font-weight: 700;
+    font-size: 14.5px;
+    color: var(--jet-black);
+    margin-bottom: 4px;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .step-body p {
+    font-size: 13.5px;
+    color: rgba(43,43,43,0.75);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ── MILESTONE TRACK ── */
+  .milestones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .milestone-card {
+    background: #fff;
+    border-radius: var(--radius-sm);
+    padding: 24px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .milestone-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+  }
+
+  .milestone-card .pct {
+    font-family: 'Outfit', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--brand-red);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .milestone-card .label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--dark-gray);
+    letter-spacing: 0.3px;
+  }
+
+  /* ── PRICING GRID ── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .price-card {
+    background: #fff;
+    border-radius: var(--radius-sm);
+    padding: 20px 24px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .price-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(230,57,70,0.15);
+  }
+
+  .price-card .svc {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--jet-black);
+  }
+
+  .price-card .amt {
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--brand-red);
+  }
+
+  .price-card .amt span {
+    font-size: 12px;
+    color: var(--dark-gray);
+    font-weight: 500;
+  }
+
+  /* ── ALERT BANNER ── */
+  .alert {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: rgba(230, 57, 70, 0.02);
+    border: 1px solid rgba(230, 57, 70, 0.12);
+    border-left: 3px solid var(--brand-red);
+    border-radius: var(--radius-sm);
+    padding: 18px 24px;
+    margin: 20px 0;
+  }
+
+  .alert-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .alert p {
+    font-size: 14px;
+    color: #4a1215;
+    font-weight: 500;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .alert strong { color: var(--brand-red); font-weight: 700; }
+
+  /* ── INFO BLOCK ── */
+  .info-block {
+    background: var(--soft-pink);
+    border-radius: var(--radius-sm);
+    padding: 18px 22px;
+    margin: 16px 0;
+    font-size: 14px;
+    color: var(--jet-black);
+    line-height: 1.65;
+    border: 1px solid rgba(230, 57, 70, 0.08);
+  }
+
+  /* ── FOUNDERS GRID ── */
+  .founders-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .founder-card {
+    background: #fff;
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .founder-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #121214;
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .founder-info .name {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 14.5px;
+    color: var(--jet-black);
+    text-transform: capitalize;
+  }
+
+  .founder-info .day {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    color: var(--brand-red);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── RULES LIST ── */
+  .rules-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .rules-list li {
+    font-size: 14px;
+    color: var(--dark-gray);
+    padding: 14px 18px 14px 38px;
+    background: #fff;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    position: relative;
+    line-height: 1.65;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .rules-list li::before {
+    content: '→';
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--brand-red);
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  /* ── TRACKING FIELDS ── */
+  .fields-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .field-chip {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--jet-black);
+    text-align: center;
+    box-shadow: none;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--jet-black);
+    color: rgba(255,255,255,0.4);
+    padding: 48px 64px;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-left: 0;
+    border-top: 1px solid rgba(255,255,255,0.03);
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .footer img {
+    width: 90px;
+    opacity: 0.7;
+  }
+
+  .footer-right {
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  .footer-right p {
+    font-size: 11px;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--brand-red); }
+
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+    .hero, .content { padding: 40px 24px; }
+    .pricing-grid, .founders-grid, .milestones, .fields-grid { grid-template-columns: 1fr; }
+    .footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+    .context-note { padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── SIDEBAR ── -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <img src="https://res.cloudinary.com/dksrjgxdr/image/upload/v1780406380/logo_oniviw.webp" alt="NOVUM Logo">
+  </div>
+  <div class="sidebar-label">Contents</div>
+
+  <a class="nav-item" href="#s1"><span class="nav-num">01</span> Core Principles</a>
+  <a class="nav-item" href="#s2"><span class="nav-num">02</span> Company Structure</a>
+  <a class="nav-item" href="#s3"><span class="nav-num">03</span> Revenue Distribution</a>
+  <a class="nav-item" href="#s4"><span class="nav-num">04</span> Course Work</a>
+  <a class="nav-item" href="#s5"><span class="nav-num">05</span> Website Projects</a>
+  <a class="nav-item" href="#s6"><span class="nav-num">06</span> Client Acquisition</a>
+  <a class="nav-item" href="#s7"><span class="nav-num">07</span> Ghost Client Protection</a>
+  <a class="nav-item" href="#s8"><span class="nav-num">08</span> Pricing Standards</a>
+  <a class="nav-item" href="#s9"><span class="nav-num">09</span> Task Tracking</a>
+  <a class="nav-item" href="#s10"><span class="nav-num">10</span> Role Flexibility</a>
+  <a class="nav-item" href="#s11"><span class="nav-num">11</span> Social Media & Brand</a>
+  <a class="nav-item" href="#s12"><span class="nav-num">12</span> Client Ownership</a>
+  <a class="nav-item" href="#s13"><span class="nav-num">13</span> Outsourcing Rules</a>
+  <a class="nav-item" href="#s14"><span class="nav-num">14</span> Company Fund</a>
+  <a class="nav-item" href="#s15"><span class="nav-num">15</span> Communication</a>
+  <a class="nav-item" href="#s16"><span class="nav-num">16</span> Commitment Rule</a>
+  <a class="nav-item" href="#s17"><span class="nav-num">17</span> Conflict Resolution</a>
+  <a class="nav-item" href="#s18"><span class="nav-num">18</span> Future Services</a>
+  <a class="nav-item" href="#s19"><span class="nav-num">19</span> Posting Schedule</a>
+  <a class="nav-item" href="#s20"><span class="nav-num">20</span> Rulebook Review</a>
+
+  <div class="sidebar-footer">
+    <div class="version-badge">VERSION 2.0</div>
+    <p>NOVUM Technology<br>Internal Document — Confidential<br>June 2026 · novumtech.in</p>
+  </div>
+</nav>
+
+<!-- ── MAIN ── -->
+<main class="main">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-confidential">Internal Document · Confidential</div>
+    <div class="hero-logo-wrap">
+      <img src="https://res.cloudinary.com/dksrjgxdr/image/upload/v1780406380/logo_oniviw.webp" alt="NOVUM Logo">
+    </div>
+    <div class="hero-title">
+      <span class="word-operating">Operating</span>
+      <span class="word-manual">Manual</span>
+    </div>
+    <div class="hero-subtitle">The Founding Rulebook</div>
+    <p class="hero-sub">The complete framework for how NOVUM operates, earns, and grows together.</p>
+    <div class="hero-meta">
+      <span class="meta-chip red">Version 2.0</span>
+      <span class="meta-chip">June 2026</span>
+      <span class="meta-chip">4 Co-founders</span>
+      <span class="meta-chip">Contribution Model</span>
+    </div>
+  </header>
+
+  <!-- CONTEXT NOTE -->
+  <div class="context-note">
+    <p>
+      <strong style="color:var(--jet-black);">Why this version exists:</strong>
+      After honest discussion, the team agreed that since no founder is currently fully committed to NOVUM as their primary focus, a passive share is not justified. This version moves to a <strong style="color:var(--brand-red);">pure contribution model</strong> — you earn only what you do. The company grows as a shared portfolio and brand that benefits everyone in the long run.
+    </p>
+  </div>
+
+  <div class="content">
+
+    <!-- S1 CORE PRINCIPLES -->
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <h2 class="section-title">Core Principles</h2>
+      </div>
+      <ul class="principle-list">
+        <li>You earn what you contribute — nothing more, nothing less</li>
+        <li>Revenue generation is directly rewarded</li>
+        <li>The NOVUM brand and portfolio is the shared long-term asset for all founders</li>
+        <li>Transparency is mandatory in every deal, every payment, every decision</li>
+        <li>All 4 founders are equal co-owners — but ownership does not generate income unless you contribute</li>
+      </ul>
+    </section>
+
+    <!-- S2 COMPANY STRUCTURE -->
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <h2 class="section-title">Company Structure</h2>
+      </div>
+      <div class="card">
+        <p>All 4 founders are <strong>equal co-owners</strong> of NOVUM regardless of current personal situation. Ownership is permanent unless a founder formally exits per Section 19.</p>
+      </div>
+    </section>
+
+    <!-- S3 REVENUE DISTRIBUTION -->
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <h2 class="section-title">Revenue Distribution Model</h2>
+      </div>
+      <p style="font-size:13.5px; color:#555; margin-bottom:20px;">Every project payment is split in the following fixed order:</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <strong>Company Fund — 5%</strong>
+            <p>Taken first from every payment. Used for hosting, domains, software, AI tools, marketing, and infrastructure.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <strong>External Costs (if any)</strong>
+            <p>Outsourcing fees or third-party costs deducted before personal earnings are calculated.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <strong>Remaining Amount Split</strong>
+            <p>Distributed according to roles as outlined below.</p>
+          </div>
+        </div>
+      </div>
+
+      <table class="dist-table" style="margin-top:24px;">
+        <thead>
+          <tr>
+            <th>Who</th>
+            <th>Share</th>
+            <th>For What</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Work Executor</td><td>70%</td><td>Doing the actual project work</td></tr>
+          <tr><td>Client Connector</td><td>25%</td><td>Bringing the client</td></tr>
+          <tr><td>Company Fund</td><td>5%</td><td>Taken first, from total payment</td></tr>
+        </tbody>
+      </table>
+
+      <div class="info-block">
+        <strong>Special Rule:</strong> If the same person both executes the work AND brought the client, they receive <strong>95%</strong>, and 5% goes to Company Fund. Any rounding difference also goes to Company Fund.
+      </div>
+    </section>
+
+    <!-- S4 COURSE WORK -->
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <h2 class="section-title">Course Work — Payment Structure</h2>
+      </div>
+      <div class="card">
+        <p>Teaching, syllabus creation, and content delivery is higher-effort work and is compensated at a slightly higher rate. For every course batch or sale, after the <strong>10% Company Fund</strong> is taken first:</p>
+      </div>
+
+      <table class="dist-table">
+        <thead>
+          <tr><th>Who</th><th>Share</th><th>For What</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Course Creator / Teacher</td><td>70%</td><td>Teaching, syllabus, content, delivery</td></tr>
+          <tr><td>Student Connector</td><td>25%</td><td>Enrolling / bringing the student</td></tr>
+          <tr><td>Company Fund (additional)</td><td>5%</td><td>Brand, portfolio</td></tr>
+        </tbody>
+      </table>
+
+      <div class="alert">
+        <span class="alert-icon">ℹ️</span>
+        <p>Support roles (admin, enrollment, routing, scheduling) done by other founders are considered <strong>baseline NOVUM contribution</strong> — not separately billable. If support workload becomes unusually heavy, a one-time bonus from Company Fund may be approved by majority vote.</p>
+      </div>
+
+      <div class="card">
+        <p><strong>If course is outsourced:</strong> External instructor is paid an agreed fixed fee first (External Cost). Remaining follows the standard course split above. The founder who manages the outsourced instructor receives the 70% executor share.</p>
+      </div>
+    </section>
+
+    <!-- S5 WEBSITE PROJECTS -->
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <h2 class="section-title">Website Project — Payment Structure</h2>
+      </div>
+      <ul class="rules-list">
+        <li>Standard distribution from Section 3 applies to all website projects</li>
+        <li>Only one founder executes a website project at a time — that person is the <strong>Lead Developer</strong></li>
+        <li>Assignment is decided based on availability, skill, and deadline — agreed and logged before work begins</li>
+        <li>No founder starts a website project without it being formally assigned</li>
+      </ul>
+    </section>
+
+    <!-- S6 CLIENT ACQUISITION -->
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <h2 class="section-title">Client Acquisition — Everyone's Responsibility</h2>
+      </div>
+      <div class="card">
+        <p>There is no dedicated salesperson. Every founder is expected to bring clients through: cold calling, LinkedIn and Instagram outreach, referrals, personal networking, WhatsApp follow-ups, and any other approach.</p>
+        <p>The <strong>25% sales commission</strong> is a strong incentive — whoever brings the client, earns it. This applies equally to website projects and course enrollments.</p>
+        <p>If a client comes through the NOVUM website or social media without a specific founder's direct effort, the 25% sales commission goes to <strong>Company Fund</strong>.</p>
+      </div>
+    </section>
+
+    <!-- S7 GHOST CLIENT PROTECTION -->
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <h2 class="section-title">Ghost Client Protection</h2>
+      </div>
+      <div class="alert">
+        <span class="alert-icon">🛡️</span>
+        <p><strong>Non-negotiable:</strong> No founder should lose days or weeks of work because a client disappears.</p>
+      </div>
+
+      <div class="card">
+        <p><strong>Before any work begins, all three must be confirmed:</strong></p>
+      </div>
+      <ul class="rules-list">
+        <li><strong>Written brief</strong> — client requirements confirmed in writing (WhatsApp is acceptable)</li>
+        <li><strong>Advance payment</strong> — minimum 40% of agreed total received before work starts</li>
+        <li><strong>Project logged</strong> — entry in shared tracker with client name, contact, amount, advance received, deadline</li>
+      </ul>
+
+      <div class="milestones">
+        <div class="milestone-card">
+          <div class="pct">40%</div>
+          <div class="label">Project Start — Advance</div>
+        </div>
+        <div class="milestone-card">
+          <div class="pct">60%</div>
+          <div class="label">Final Delivery — Balance</div>
+        </div>
+      </div>
+
+      <div class="alert">
+        <span class="alert-icon">⚠️</span>
+        <p><strong>Final files, domain access, and hosting credentials are never handed over until 100% payment is received.</strong></p>
+      </div>
+
+      <div class="card">
+        <p><strong>If client ghosts mid-project:</strong> Work stops immediately. Lead Developer is compensated from advance: <strong>90% to Lead Developer</strong>, 10% to Company Fund. One final written message is sent, then project is closed.</p>
+        <p><strong>If client ghosts before work starts:</strong> The advance rule means no work was done — no loss incurred. Log the lead as <em>Dead</em> in the tracker and move on.</p>
+      </div>
+    </section>
+
+    <!-- S8 PRICING -->
+    <section class="section" id="s8">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <h2 class="section-title">Pricing Standards</h2>
+      </div>
+      <p style="font-size:13px; color:#666; margin-bottom:16px;">Minimum pricing — no founder quotes below these without team discussion:</p>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="svc">Basic Website (static, 3–5 pages)</div>
+          <div class="amt">₹8,000 <span>min.</span></div>
+        </div>
+        <div class="price-card">
+          <div class="svc">Business Website (dynamic, with forms)</div>
+          <div class="amt">₹15,000 <span>min.</span></div>
+        </div>
+        <div class="price-card">
+          <div class="svc">E-commerce Website</div>
+          <div class="amt">₹25,000 <span>min.</span></div>
+        </div>
+        <div class="price-card">
+          <div class="svc">Website Redesign</div>
+          <div class="amt">₹6,000 <span>min.</span></div>
+        </div>
+        <div class="price-card">
+          <div class="svc">AI / Automation Projects</div>
+          <div class="amt">Scope <span>first, then quote</span></div>
+        </div>
+        <div class="price-card">
+          <div class="svc">Courses</div>
+          <div class="amt">Per batch <span>majority approves</span></div>
+        </div>
+      </div>
+      <ul class="rules-list" style="margin-top:16px;">
+        <li>Always communicated as: <em>"Starting from ₹X depending on requirements"</em></li>
+        <li>Final price must be confirmed by at least <strong>2 founders</strong> before sending to client</li>
+        <li>Any quote above <strong>₹50,000</strong> must be approved by at least <strong>3 founders</strong></li>
+      </ul>
+    </section>
+
+    <!-- S9 TASK TRACKING -->
+    <section class="section" id="s9">
+      <div class="section-header">
+        <div class="section-num">09</div>
+        <h2 class="section-title">Task & Project Tracking</h2>
+      </div>
+      <div class="card">
+        <p>All projects, leads, and tasks must be logged in a shared tool (Notion, Trello, or Google Sheet). Minimum required fields:</p>
+      </div>
+      <div class="fields-grid">
+        <div class="field-chip">Project Name</div>
+        <div class="field-chip">Client Name & Contact</div>
+        <div class="field-chip">Service Type</div>
+        <div class="field-chip">Assigned Executor(s)</div>
+        <div class="field-chip">Client Connector</div>
+        <div class="field-chip">Total Agreed Amount</div>
+        <div class="field-chip">Advance Received</div>
+        <div class="field-chip">Payment Status</div>
+        <div class="field-chip">Deadline</div>
+        <div class="field-chip">Status / Notes</div>
+      </div>
+      <div class="alert" style="margin-top:16px;">
+        <span class="alert-icon">📅</span>
+        <p>Every founder must update their task status at least <strong>once every 3 days</strong>. A short weekly check-in (voice call or group text summary) must happen every <strong>Wednesday</strong>.</p>
+      </div>
+    </section>
+
+    <!-- S10 ROLE FLEXIBILITY -->
+    <section class="section" id="s10">
+      <div class="section-header">
+        <div class="section-num">10</div>
+        <h2 class="section-title">Role Flexibility</h2>
+      </div>
+      <div class="card">
+        <p>There are no permanently fixed execution roles. Any founder can take a website project, bring a client, handle course administration, manage social media, or handle client communication. <strong>Earnings always follow contribution.</strong></p>
+      </div>
+    </section>
+
+    <!-- S11 SOCIAL MEDIA -->
+    <section class="section" id="s11">
+      <div class="section-header">
+        <div class="section-num">11</div>
+        <h2 class="section-title">Social Media & Brand Contribution</h2>
+      </div>
+      <ul class="rules-list">
+        <li>Posting and managing NOVUM social media is a <strong>baseline founder duty</strong> — not separately paid</li>
+        <li>Only approved content may be posted on official NOVUM accounts</li>
+        <li>Any founder posting on behalf of NOVUM must inform the group beforehand</li>
+      </ul>
+    </section>
+
+    <!-- S12 CLIENT OWNERSHIP -->
+    <section class="section" id="s12">
+      <div class="section-header">
+        <div class="section-num">12</div>
+        <h2 class="section-title">Client Ownership Rule</h2>
+      </div>
+      <div class="card">
+        <p>All clients acquired using the NOVUM name, website, brand, or social media <strong>belong to NOVUM</strong> — not to any individual.</p>
+      </div>
+      <ul class="rules-list">
+        <li>No private handling of company clients</li>
+        <li>No redirecting clients to personal freelance work</li>
+        <li>No using NOVUM client contacts for personal projects</li>
+      </ul>
+      <div class="alert">
+        <span class="alert-icon">⚠️</span>
+        <p>If a founder uses NOVUM's brand for a personal deal without disclosure: <strong>5% of total project value</strong> must be paid to Company Fund. If hidden and discovered later — formal warning issued and Company Fund compensation required.</p>
+      </div>
+    </section>
+
+    <!-- S13 OUTSOURCING -->
+    <section class="section" id="s13">
+      <div class="section-header">
+        <div class="section-num">13</div>
+        <h2 class="section-title">Outsourcing Rules</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-dot" style="background:var(--gradient-dark);">A</div>
+          <div class="step-body">
+            <strong>Outsourced Execution</strong>
+            <p>External person does the work. They are paid first as External Cost. Remaining follows standard split.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot" style="background:var(--gradient-dark);">B</div>
+          <div class="step-body">
+            <strong>External Person Brings Client</strong>
+            <p>Project stays under NOVUM. External person is paid from the 25% sales commission. Remaining distribution is standard.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot" style="background:var(--gradient-dark);">C</div>
+          <div class="step-body">
+            <strong>External Partner Joint Deal Using NOVUM Brand</strong>
+            <p>Treated as a full company project. Standard rules apply.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S14 COMPANY FUND -->
+    <section class="section" id="s14">
+      <div class="section-header">
+        <div class="section-num">14</div>
+        <h2 class="section-title">Company Fund Management</h2>
+      </div>
+      <div class="alert">
+        <span class="alert-icon">💰</span>
+        <p>Company Fund withdrawals above <strong>₹500</strong> require approval from at least <strong>2 founders</strong>.</p>
+      </div>
+    </section>
+
+    <!-- S15 COMMUNICATION -->
+    <section class="section" id="s15">
+      <div class="section-header">
+        <div class="section-num">15</div>
+        <h2 class="section-title">Communication Rules</h2>
+      </div>
+      <ul class="rules-list">
+        <li>One official <strong>NOVUM Founders Group</strong> (WhatsApp or Telegram) for all company communication</li>
+        <li>No company decision made outside this group is binding</li>
+        <li>Every founder must respond within <strong>24 hours</strong> on normal days</li>
+        <li>If unavailable for more than 2 days, inform the group in advance</li>
+        <li>Internal finances, conflicts, and problems are <strong>never discussed with outsiders</strong></li>
+      </ul>
+    </section>
+
+    <!-- S16 COMMITMENT -->
+    <section class="section" id="s16">
+      <div class="section-header">
+        <div class="section-num">16</div>
+        <h2 class="section-title">Commitment Rule</h2>
+      </div>
+      <div class="card">
+        <p>Since there is no passive company share, there is no penalty for being inactive — you simply earn nothing during that period. However:</p>
+      </div>
+      <ul class="rules-list">
+        <li>A founder consistently inactive for <strong>60+ days</strong> with zero contribution must communicate their situation to the group</li>
+        <li>If unreachable for <strong>60+ days</strong> with no prior notice, the team may vote to reassign pending tasks and reduce access to company accounts until they return</li>
+        <li>Ownership is <strong>not affected</strong> by inactivity unless the founder formally exits</li>
+      </ul>
+    </section>
+
+    <!-- S17 CONFLICT RESOLUTION -->
+    <section class="section" id="s17">
+      <div class="section-header">
+        <div class="section-num">17</div>
+        <h2 class="section-title">Conflict Resolution</h2>
+      </div>
+      <ul class="rules-list">
+        <li>All conflicts are discussed openly in the founders group</li>
+        <li>Both sides must be heard before any decision is made</li>
+        <li><strong>Majority vote (3 of 4)</strong> applies</li>
+        <li>If unresolved after majority discussion, the decision is paused for <strong>7 days</strong> and revisited</li>
+        <li>No founder may disrespect another founder publicly or in front of clients</li>
+      </ul>
+    </section>
+
+    <!-- S18 FUTURE SERVICES -->
+    <section class="section" id="s18">
+      <div class="section-header">
+        <div class="section-num">18</div>
+        <h2 class="section-title">Future Services</h2>
+      </div>
+      <div class="card">
+        <p>As NOVUM expands into AI integration, automation, and custom software:</p>
+      </div>
+      <ul class="rules-list">
+        <li>New pricing standards will be added to this document</li>
+        <li>Role assignments for new services are decided by majority before the service is publicly offered</li>
+        <li>No new service is advertised until at least one founder can confidently deliver it</li>
+      </ul>
+    </section>
+
+    <!-- S19 POSTING SCHEDULE -->
+    <section class="section" id="s19">
+      <div class="section-header">
+        <div class="section-num">19</div>
+        <h2 class="section-title">Social Media Posting Schedule</h2>
+      </div>
+      <div class="card">
+        <p>Each founder must publish at least <strong>one approved NOVUM-related post every two weeks</strong>. With four founders, this results in a minimum of <strong>4 posts every two weeks</strong> (~8 posts/month) across all NOVUM platforms.</p>
+      </div>
+
+      <div class="founders-grid">
+        <div class="founder-card">
+          <div class="founder-avatar">AS</div>
+          <div class="founder-info">
+            <div class="name">Ashique</div>
+            <div class="day">Every Monday</div>
+          </div>
+        </div>
+        <div class="founder-card">
+          <div class="founder-avatar">SR</div>
+          <div class="founder-info">
+            <div class="name">Sarfras</div>
+            <div class="day">Every Thursday</div>
+          </div>
+        </div>
+        <div class="founder-card">
+          <div class="founder-avatar">SH</div>
+          <div class="founder-info">
+            <div class="name">Shamil</div>
+            <div class="day">Every Sunday</div>
+          </div>
+        </div>
+        <div class="founder-card">
+          <div class="founder-avatar">SK</div>
+          <div class="founder-info">
+            <div class="name">Sheik</div>
+            <div class="day">Every Wednesday</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px;">
+        <p><strong>Content may include:</strong> Project showcases, website demos, client success stories, AI/tech content, educational content, course promotions, company updates, behind-the-scenes activities.</p>
+      </div>
+      <ul class="rules-list">
+        <li>If unable to post on assigned day, inform the founders group in advance and complete within the same two-week cycle</li>
+        <li>Special day posts (festivals, events, major announcements) may be posted outside the assigned schedule</li>
+        <li>Duplicate posts for the same event should be avoided unless intentionally planned</li>
+        <li>All planned and completed posts must be logged in the shared tracking system</li>
+      </ul>
+    </section>
+
+    <!-- S20 RULEBOOK REVIEW -->
+    <section class="section" id="s20">
+      <div class="section-header">
+        <div class="section-num">20</div>
+        <h2 class="section-title">Rulebook Review</h2>
+      </div>
+      <ul class="rules-list">
+        <li>Reviewed every <strong>3 months</strong></li>
+        <li>Any founder may propose changes</li>
+        <li>Changes require <strong>3 out of 4 founder approval</strong></li>
+        <li>Updated versions are numbered and shared with all founders</li>
+        <li>All founders must acknowledge each version in the founders group</li>
+      </ul>
+    </section>
+
+  </div><!-- /content -->
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <img src="https://res.cloudinary.com/dksrjgxdr/image/upload/v1780406380/logo_oniviw.webp" alt="NOVUM">
+    </div>
+    <div class="footer-right">
+      <p>NOVUM Technology — Internal Document — Not for Public Distribution</p>
+      <p>novumtech.in · Version 2.0 · June 2026</p>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navItems.forEach(n => {
+      n.classList.remove('active');
+      if (n.getAttribute('href') === '#' + current) n.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
